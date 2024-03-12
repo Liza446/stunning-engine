@@ -2,26 +2,25 @@
 #include<string>
 #include<algorithm>
 #include<vector>
-using namespace std;
 
 class MyArray
 {
 public:
     MyArray();
     ~MyArray();
-    friend ostream& operator <<(ostream& os, const MyArray array);
-    void SetRandom(string& s);
+    friend ostream& operator <<(std::ostream& os, const MyArray array);
+    void SetRandom(std::string& s);
     int SumBeforeMin();
 
 private:
-    vector<int> v;
-    int CheckIndex(string& s);
+    std::vector<int> v;
+    int CheckIndex(std::string& s);
 };
 
 MyArray::MyArray(){}
 MyArray::~MyArray(){}
 
-ostream& operator << (ostream& os, const MyArray array) {
+ostream& operator << (std::ostream& os, const MyArray array) {
     for (int i = 0; i < array.v.size(); i++)
     {
         os << array.v[i] << " ";
@@ -29,7 +28,7 @@ ostream& operator << (ostream& os, const MyArray array) {
     return os;
 }
 
-void MyArray::SetRandom(string& s) {
+void MyArray::SetRandom(std::string& s) {
 
     int length = CheckIndex(s);
     v.resize(length);
@@ -41,11 +40,11 @@ void MyArray::SetRandom(string& s) {
         v[i] = rand() % 100 + 1;
 }
 
-int MyArray::CheckIndex(string& s) {
+int MyArray::CheckIndex(std::string& s) {
     try
     {
         int temp = 0;
-        temp = stoi(s);
+        temp = std::stoi(s);
         if (temp < 0)
             throw 1;
         return temp;
@@ -74,14 +73,14 @@ int main()
 
     string s;
 
-    cout << "Введите размер массива: ";
-    cin >> s;
+    std::cout << "Введите размер массива: ";
+    std::cin >> s;
 
     MyArray v;
 
     v.SetRandom(s);
 
-    cout << "Массив: " << v << "\n" 
+    std::cout << "Массив: " << v << "\n" 
          << "Сумма до минимального элемента: " 
     << v.SumBeforeMin();
 } 

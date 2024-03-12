@@ -4,13 +4,12 @@
 #include <ios>
 #include <vector>
 #include <string>
-using namespace std;
 
-void func1(vector<float>& tvr);
-void func2(vector<float>& tvr);
-void printVector(vector<float>& tvr);
+void func1(std::vector<float>& tvr);
+void func2(std::vector<float>& tvr);
+void printVector(std::vector<float>& tvr);
 
-void func1(vector<float>& tvr) {
+void func1(std::vector<float>& tvr) {
     float sum = 0;
     int size = tvr.size();
 
@@ -22,7 +21,7 @@ void func1(vector<float>& tvr) {
     printVector(tvr);
 }
 
-void func2(vector<float>& tvr) {
+void func2(std::vector<float>& tvr) {
     float min = tvr[0];
 
     for (int i = 0; i < tvr.size(); i++) {
@@ -38,20 +37,20 @@ void func2(vector<float>& tvr) {
     printVector(tvr);
 }
 
-void printVector(vector<float>& tvr) {
+void printVector(std::vector<float>& tvr) {
     for (int i = 0; i < tvr.size(); i++) {
-        cout << tvr[i] << ' ';
+        std::cout << tvr[i] << ' ';
     }
-    cout << '\n';
+    std::cout << '\n';
 }
 
 void main() {
-    cout.setf(ios::fixed);
+    cout.setf(std::ios::fixed);
     cout.precision(3);
 
     int capacity = 0;
     int size = 0;
-    cin >> size;
+    std::cin >> size;
     capacity = size + 1;
 
     vector<float> v1;
@@ -62,7 +61,7 @@ void main() {
         cin >> v1[i];
     }
 
-    cout << v1.size() << '\n';
+    std::cout << v1.size() << '\n';
     printVector(v1);
 
     func1(v1);
@@ -71,19 +70,19 @@ void main() {
 
     bool b = true;
     while (true) {
-        cout << '\n';
+        std::cout << '\n';
         int c;
-        cin >> c;
+        std::cin >> c;
 
         if (c == 0)
             break;
 
         if (c == 1){
             float x = 0;
-            cin >> x;
+            std::cin >> x;
 
             v1.push_back(x);
-            cout << "+: " << v1.size() << '\n';
+            std::cout << "+: " << v1.size() << '\n';
             printVector(v1);
 
             func1(v1);
@@ -92,7 +91,7 @@ void main() {
         };
         if (c == 2) {
             v1.pop_back();
-            cout << "-: " << v1.size() << '\n';
+            std::cout << "-: " << v1.size() << '\n';
             printVector(v1);
 
             func1(v1);
